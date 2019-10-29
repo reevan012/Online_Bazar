@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 24, 2019 3:51:20 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.EntityModel.UserRole" table="user_role" catalog="hr" optimistic-lock="version">
+        <id name="roleId" type="java.lang.Integer">
+            <column name="role_id" />
+            <generator class="identity" />
+        </id>
+        <property name="roleName" type="string">
+            <column name="role__name" length="45" not-null="true" />
+        </property>
+        <set name="shopeUses" table="shope_use" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="role_id" not-null="true" />
+            </key>
+            <one-to-many class="com.EntityModel.ShopeUse" />
+        </set>
+    </class>
+</hibernate-mapping>

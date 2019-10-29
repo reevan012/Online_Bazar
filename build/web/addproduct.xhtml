@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form enctype="multipart/form-data">
+
+            <p:messages id="msg" closable="true" showDetail="true"></p:messages>
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Select Category Name:"></h:outputLabel>
+                <p:selectOneMenu value="#{addpro.catname}">
+                    <f:selectItem itemLabel="Select Category Name" itemValue=""></f:selectItem>
+                    <f:selectItems value="#{subAdd.categoryName}"></f:selectItems>
+                    <p:ajax update="scat"/>
+                </p:selectOneMenu>
+                <h:outputLabel value="Select Sub_Category Name:"></h:outputLabel>
+                <p:selectOneMenu value="#{addpro.subcatname}" id="scat">
+                    <f:selectItem itemLabel="Select Sub_category Name" itemValue=""></f:selectItem>
+                    <f:selectItems value="#{addpro.subCategoryName}"></f:selectItems>
+                </p:selectOneMenu>
+                <h:outputLabel value=" Product Name:"></h:outputLabel>
+                <p:inputText value="#{addpro.pro.proName}"/>
+                <h:outputLabel value="Quantity of Product:"/>
+                <p:inputText value="#{addpro.pro.proQuantity}"/>
+                <h:outputLabel value="Price of Prpducts:"/>
+                <p:inputText value="#{addpro.pro.proPrice}"/>
+                <h:outputLabel value="Select images:"/>
+                <p:fileUpload value="#{addpro.file}" mode="simple"/>
+                <h:outputLabel value="Upload Image:"></h:outputLabel>
+                <h:graphicImage name="#{addpro.pro.proUrl}" library="images"/>
+                <h:outputLabel value="Descriiption of Product:"></h:outputLabel>
+                <p:inputText value="#{addpro.pro.proDsc}"/>
+
+                <p:commandButton action="#{addpro.addProduct}" value="Save" update="msg" ajax="false"/>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

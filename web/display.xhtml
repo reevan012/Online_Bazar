@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <meta http-equiv="Context-type" content="text/html; charset=UTF-8"/>
+        <style>
+            .product{
+                width: 150px;
+                height: 200px;
+                float: left;
+                margin-right: 10px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="form">  
+            <p:panel header="cart">
+                <h:outputText value="#{carthandl.cartSize}  #{carthandl.item}" id="cart"/>
+                <h:outputLink value="viewCart.xhtml"> View Cart</h:outputLink>
+            </p:panel>
+            <p:dataGrid var="p" value="#{dispro.allProducts}" columns="3" rows="100" paginator="true"  
+                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink}
+                        {LastPageLink}" rowsPerPageTemplate="6,12,18">
+
+                <f:facet name="header">
+                    <h:outputLabel value="All Products"></h:outputLabel>
+                </f:facet>
+                <p:panel header="#{p.proName}">
+
+                    <h:panelGrid columns="1">
+                        <h:graphicImage name="#{p.proUrl}" library="images" width="150" height="200"/>
+                        <h:outputLabel value="#{p.proPrice}"/>
+                       
+                        <p:commandButton action="#{shopcart.addtoCart(p)}" value="AddCart" ajax="false" update=":form:cart">
+
+                        </p:commandButton>
+                    </h:panelGrid>
+                
+
+                </p:panel>
+            </p:dataGrid>
+     
+        </h:form>
+    </h:body>
+</html>
+

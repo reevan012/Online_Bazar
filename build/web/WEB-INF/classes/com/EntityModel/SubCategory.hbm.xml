@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 24, 2019 3:51:20 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.EntityModel.SubCategory" table="sub_category" catalog="hr" optimistic-lock="version">
+        <id name="subId" type="java.lang.Integer">
+            <column name="sub_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="com.EntityModel.Category" fetch="select">
+            <column name="cat_id" />
+        </many-to-one>
+        <property name="subCatName" type="string">
+            <column name="sub_cat_name" length="45" not-null="true" />
+        </property>
+        <property name="subCatDsc" type="string">
+            <column name="sub_cat_dsc" length="200" />
+        </property>
+        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sub_id" not-null="true" />
+            </key>
+            <one-to-many class="com.EntityModel.Product" />
+        </set>
+    </class>
+</hibernate-mapping>

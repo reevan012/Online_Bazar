@@ -1,0 +1,36 @@
+<!--<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <titl.
+            8/
+            e>Facelet Title</title>
+    </h:head>
+    <h:body>
+       
+            <h:form action="http://www.sandbox.paypal.com/cql-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="-cart"/>
+                <input type="hidden" name="upload" value="1"/>
+                <c:set var="dem" value="1"/>
+                <c:forEach items="#{shopcart.cart}" var="i">
+                    <input type="hidden" name="item_number_#{dem}" value="#{i.p.proId}"/>
+                    <input type="hidden" name="item_#{dem}" value="#{i.p.proName}"/>
+                    <input type="hidden" name="quantity_#{dem}" value="#{i.p.proQuantity}"/>
+                    <input type="hidden" name="amount_#{dem}" value="#{i.p.proPrice}"/>
+                    <c:set var="deeem" value="##{dem + 1}"/>
+                </c:forEach>
+                <input type="hidden" name="busiiness" value="business1_tanveerzahangir01@gmail.com"/>
+                <input type="hidden" name="return" value="httpp://localhost:3308/Online_BazarServices/success.xhtml"/>
+                <input type="hidden" name="cancel" value="httpp://localhost:3308/Online_BazarServices/fail.xhtml"/>
+                <input type="hidden" name="submit" border="0" src="http://www.paypalobjects.com/en US/i/btn/btn buynow LG.gif" alt="paypal -The safer, easier way to pay online"/>
+                
+            </h:form>
+
+        
+    </h:body>
+</html>-->
+
+963.*-
